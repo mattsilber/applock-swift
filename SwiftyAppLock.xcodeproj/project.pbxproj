@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12ED5054A03ECA7A15C0DFA6 /* Pods_SwiftyAppLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */; };
+		143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */ = {isa = PBXBuildFile; fileRef = 143AAC6E1FB52D0D00DC6461 /* CommonCrypto */; };
 		14FE8C921FB51E580063E8FD /* SwiftyAppLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FE8C881FB51E580063E8FD /* SwiftyAppLock.framework */; };
 		14FE8C971FB51E580063E8FD /* SwiftyAppLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE8C961FB51E580063E8FD /* SwiftyAppLockTests.swift */; };
 		14FE8C991FB51E580063E8FD /* SwiftyAppLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14FE8CA31FB51FAB0063E8FD /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE8CA21FB51FAB0063E8FD /* AppLock.swift */; };
+		14FE8CA51FB521280063E8FD /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE8CA41FB521280063E8FD /* Crypto.swift */; };
+		CF1FEFB963CE2764DCA04126 /* Pods_SwiftyAppLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3E595091A44BE181F94AF6 /* Pods_SwiftyAppLock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +28,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		143AAC6E1FB52D0D00DC6461 /* CommonCrypto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonCrypto; sourceTree = "<group>"; };
 		14FE8C881FB51E580063E8FD /* SwiftyAppLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyAppLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAppLock.h; sourceTree = "<group>"; };
 		14FE8C8C1FB51E580063E8FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14FE8C911FB51E580063E8FD /* SwiftyAppLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyAppLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FE8C961FB51E580063E8FD /* SwiftyAppLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAppLockTests.swift; sourceTree = "<group>"; };
 		14FE8C981FB51E580063E8FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14FE8CA21FB51FAB0063E8FD /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
+		14FE8CA41FB521280063E8FD /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyAppLockTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		554D5CB3702CFFA33A4C857F /* Pods-SwiftyAppLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAppLock.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAppLock/Pods-SwiftyAppLock.release.xcconfig"; sourceTree = "<group>"; };
+		8D3E595091A44BE181F94AF6 /* Pods_SwiftyAppLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyAppLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9DCD4C0E25C6E44DC206C92 /* Pods-SwiftyAppLockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAppLockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DEAFFC42F446C876AB8F45DA /* Pods-SwiftyAppLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAppLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAppLock/Pods-SwiftyAppLock.debug.xcconfig"; sourceTree = "<group>"; };
+		E88C87773225733BCD734944 /* Pods-SwiftyAppLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAppLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1FEFB963CE2764DCA04126 /* Pods_SwiftyAppLock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14FE8C921FB51E580063E8FD /* SwiftyAppLock.framework in Frameworks */,
+				12ED5054A03ECA7A15C0DFA6 /* Pods_SwiftyAppLockTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +72,8 @@
 				14FE8C8A1FB51E580063E8FD /* SwiftyAppLock */,
 				14FE8C951FB51E580063E8FD /* SwiftyAppLockTests */,
 				14FE8C891FB51E580063E8FD /* Products */,
+				A0A72C017179582C533FD812 /* Pods */,
+				1A3684BDFFDB06459525C41E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +89,9 @@
 		14FE8C8A1FB51E580063E8FD /* SwiftyAppLock */ = {
 			isa = PBXGroup;
 			children = (
+				143AAC6E1FB52D0D00DC6461 /* CommonCrypto */,
+				14FE8CA21FB51FAB0063E8FD /* AppLock.swift */,
+				14FE8CA41FB521280063E8FD /* Crypto.swift */,
 				14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */,
 				14FE8C8C1FB51E580063E8FD /* Info.plist */,
 			);
@@ -84,6 +105,26 @@
 				14FE8C981FB51E580063E8FD /* Info.plist */,
 			);
 			path = SwiftyAppLockTests;
+			sourceTree = "<group>";
+		};
+		1A3684BDFFDB06459525C41E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D3E595091A44BE181F94AF6 /* Pods_SwiftyAppLock.framework */,
+				4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0A72C017179582C533FD812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEAFFC42F446C876AB8F45DA /* Pods-SwiftyAppLock.debug.xcconfig */,
+				554D5CB3702CFFA33A4C857F /* Pods-SwiftyAppLock.release.xcconfig */,
+				A9DCD4C0E25C6E44DC206C92 /* Pods-SwiftyAppLockTests.debug.xcconfig */,
+				E88C87773225733BCD734944 /* Pods-SwiftyAppLockTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14FE8C9C1FB51E580063E8FD /* Build configuration list for PBXNativeTarget "SwiftyAppLock" */;
 			buildPhases = (
+				6A7CED384385553BE4B49A09 /* [CP] Check Pods Manifest.lock */,
 				14FE8C831FB51E580063E8FD /* Sources */,
 				14FE8C841FB51E580063E8FD /* Frameworks */,
 				14FE8C851FB51E580063E8FD /* Headers */,
 				14FE8C861FB51E580063E8FD /* Resources */,
+				98D1EB06EA732CC3A7DEF3F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14FE8C9F1FB51E580063E8FD /* Build configuration list for PBXNativeTarget "SwiftyAppLockTests" */;
 			buildPhases = (
+				462927ECB6985340AC26BBEA /* [CP] Check Pods Manifest.lock */,
 				14FE8C8D1FB51E580063E8FD /* Sources */,
 				14FE8C8E1FB51E580063E8FD /* Frameworks */,
 				14FE8C8F1FB51E580063E8FD /* Resources */,
+				271C4C8840CFDF4B49BFD13B /* [CP] Embed Pods Frameworks */,
+				482AAAA14BCED452CF4DBA41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +194,7 @@
 				TargetAttributes = {
 					14FE8C871FB51E580063E8FD = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					14FE8C901FB51E580063E8FD = {
@@ -179,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,11 +239,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		271C4C8840CFDF4B49BFD13B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		462927ECB6985340AC26BBEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyAppLockTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		482AAAA14BCED452CF4DBA41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A7CED384385553BE4B49A09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyAppLock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98D1EB06EA732CC3A7DEF3F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLock/Pods-SwiftyAppLock-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		14FE8C831FB51E580063E8FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FE8CA51FB521280063E8FD /* Crypto.swift in Sources */,
+				14FE8CA31FB51FAB0063E8FD /* AppLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +406,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SwiftyAppLock/CommonCrypto";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -324,6 +460,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SwiftyAppLock/CommonCrypto";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -333,7 +471,9 @@
 		};
 		14FE8C9D1FB51E580063E8FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEAFFC42F446C876AB8F45DA /* Pods-SwiftyAppLock.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.guardanis.SwiftyAppLock;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,7 +495,9 @@
 		};
 		14FE8C9E1FB51E580063E8FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 554D5CB3702CFFA33A4C857F /* Pods-SwiftyAppLock.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -375,7 +518,9 @@
 		};
 		14FE8CA01FB51E580063E8FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9DCD4C0E25C6E44DC206C92 /* Pods-SwiftyAppLockTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V375RMJBH5;
 				INFOPLIST_FILE = SwiftyAppLockTests/Info.plist;
@@ -389,7 +534,9 @@
 		};
 		14FE8CA11FB51E580063E8FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E88C87773225733BCD734944 /* Pods-SwiftyAppLockTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V375RMJBH5;
 				INFOPLIST_FILE = SwiftyAppLockTests/Info.plist;
