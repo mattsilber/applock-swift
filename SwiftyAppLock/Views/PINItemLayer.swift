@@ -104,7 +104,7 @@ class PINItemLayer: CALayer {
         self.setNeedsDisplay()
     }
     
-    func set(value: String, active: Bool) {
+    public func set(value: String, active: Bool) {
         self.value = value
         self.stateAnimationRadiusStart = radiusRangePercent
         self.stateAnimationRadiusTarget = active ? 1 : 0

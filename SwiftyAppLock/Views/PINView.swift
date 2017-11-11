@@ -5,7 +5,7 @@ open class PINView: UIView, UIKeyInput {
     var theme: Theme = Theme()
     
     fileprivate var itemData: [String] = []
-    fileprivate var itemCenters: [CGPoint] = []
+    fileprivate var itemLayers: [PINItemLayer] = []
     
     var itemsFull: Bool {
         return items.count == theme.characterCount
@@ -31,7 +31,11 @@ open class PINView: UIView, UIKeyInput {
         let containerWidth = CGFloat(theme.characterCount) * itemDiameter + (theme.spacing * CGFloat(theme.characterCount - 1))
         let startingCenterX = (UIScreen.main.bounds.width / 2) - (containerWidth / 2) + itemRadius
         
-        self.itemCenters = (0..<theme.characterCount)
+        self.itemLayers.forEach({
+            $0.removeFromSuperlayer()
+        })
+        
+        self.itemLayers = (0..<theme.characterCount)
             .map({
                 let index = CGFloat($0)
                 
@@ -39,6 +43,11 @@ open class PINView: UIView, UIKeyInput {
                     x: startingCenterX + (itemDiameter * index) + (theme.spacing * index),
                     y: self.bounds.height / 2)
             })
+            .map({ PINItemLayer(center: $0, theme: self.theme) })
+        
+        self.itemLayers.forEach({
+            self.layer.addSublayer($0)
+        })
     }
     
     public func insertText(_ text: String) {
@@ -57,6 +66,21 @@ open class PINView: UIView, UIKeyInput {
         self.itemData = itemData.take(
             fromIndex: 0,
             size: itemData.count - 1)
+    }
+    
+    public func notifyTextChanged() {
+        itemLayers.enumerated()
+            .forEach({
+                guard let value = itemData.take(index: $0.offset) else {
+                    $0.element.set(value: "", active: false)
+                    
+                    return
+                }
+                
+                $0.element.set(
+                    value: theme.characterMask ?? value,
+                    active: true)
+            })
     }
     
     public class Theme {
