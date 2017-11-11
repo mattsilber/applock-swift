@@ -1,0 +1,16 @@
+PODS:
+  - SwiftyAppLock (0.0.1)
+
+DEPENDENCIES:
+  - SwiftyAppLock (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftyAppLock:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SwiftyAppLock: f34ef0855c0e2a15255367728c48f358a805759b
+
+PODFILE CHECKSUM: 83d66e981de43188ba78985b242be6156104b8b1
+
+COCOAPODS: 1.3.1
