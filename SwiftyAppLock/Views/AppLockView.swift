@@ -13,6 +13,7 @@ public class AppLockView: UIView {
     var windowStyle: WindowStyle = .dialog {
         didSet { updateWindowTheme() }
     }
+    
     var theme: Theme = Theme() {
         didSet {
             updateContentTheme()
@@ -23,10 +24,10 @@ public class AppLockView: UIView {
     fileprivate var positiveAction: ((AppLockView, String) -> Void)?
     fileprivate var negativeAction: ((AppLockView) -> Void)?
     
-    public static func attach(
+    @discardableResult public static func attach(
+        to viewController: UIViewController,
         theme: Theme? = nil,
         windowStyle: WindowStyle = .dialog,
-        to viewController: UIViewController,
         positiveAction: @escaping (AppLockView, String) -> Void,
         negativeAction: @escaping (AppLockView) -> Void) -> AppLockView {
         
@@ -89,7 +90,7 @@ public class AppLockView: UIView {
         negativeAction?(self)
     }
     
-    open func dismiss() {
+    open func dismiss(withCompletion completion: (() -> Void)? = nil) {
         UIView.animate(
             withDuration: 0.375,
             animations: {
@@ -97,6 +98,7 @@ public class AppLockView: UIView {
             },
             completion: { [weak self] finished in
                 self?.removeFromSuperview()
+                completion?()
             })
     }
     
