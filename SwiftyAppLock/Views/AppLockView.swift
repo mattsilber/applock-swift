@@ -42,6 +42,8 @@ public class AppLockView: UIView {
         view.negativeAction = negativeAction
         view.resetItems()
         
+        view.pinView.becomeFirstResponder()
+        
         return view
     }
     
@@ -100,6 +102,10 @@ public class AppLockView: UIView {
                 self?.removeFromSuperview()
                 completion?()
             })
+    }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        pinView.becomeFirstResponder()
     }
     
     public enum WindowStyle {

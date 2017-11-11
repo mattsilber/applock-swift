@@ -1,0 +1,15 @@
+Pod::Spec.new do |s|
+s.name = 'SwiftyAppLock'
+s.version = '0.0.1'
+s.license = { :type => 'Apache 2.0', :file => 'LICENSE' }
+s.summary = 'The Swift/iOS implementation of AppLock'
+
+s.homepage = 'http://github.com/mattsilber/AppLock-swift'
+s.author = { 'matt' => 'matt@guardanis.com' }
+
+s.source = { :git => 'git@github.com:mattsilber/AppLock-swift.git', :tag => s.version  }
+s.source_files = 'SwiftyAppLock/*.swift'
+s.ios.deployment_target = '8.0'
+s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+
+end 
