@@ -3,12 +3,12 @@ import CommonCrypto
 
 public class Crypto {
     
-    enum Mode {
+    public enum Mode {
         
         case sha1
     }
     
-    static func encrypt(string: String, withMode mode: Mode) -> String? {
+    public static func encrypt(string: String, withMode mode: Mode) -> String? {
         guard let data = string.data(using: .utf8, allowLossyConversion: false) else { return nil }
         
         return encrypt(data: data, withMode: mode)
@@ -16,7 +16,7 @@ public class Crypto {
             .joined()
     }
     
-    static func encrypt(data: Data, withMode mode: Mode) -> Data {
+    public static func encrypt(data: Data, withMode mode: Mode) -> Data {
         var bytes: [UInt8]
         
         switch mode {

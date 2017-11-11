@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		12ED5054A03ECA7A15C0DFA6 /* Pods_SwiftyAppLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */; };
 		143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */ = {isa = PBXBuildFile; fileRef = 143AAC6E1FB52D0D00DC6461 /* CommonCrypto */; };
+		14AA75D21FB7745500160F29 /* PINItemLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D11FB7745500160F29 /* PINItemLayer.swift */; };
+		14AA75D41FB7790800160F29 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D31FB7790800160F29 /* Colors.swift */; };
+		14D517F11FB7582500AA2CA8 /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D517F01FB7582500AA2CA8 /* AppLockView.swift */; };
+		14D517F31FB75A6900AA2CA8 /* AppLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D517F21FB75A6900AA2CA8 /* AppLockView.xib */; };
+		14D517F51FB7684900AA2CA8 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D517F41FB7684900AA2CA8 /* Collections.swift */; };
+		14D517F71FB76AEA00AA2CA8 /* PINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D517F61FB76AEA00AA2CA8 /* PINView.swift */; };
 		14FE8C921FB51E580063E8FD /* SwiftyAppLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FE8C881FB51E580063E8FD /* SwiftyAppLock.framework */; };
 		14FE8C971FB51E580063E8FD /* SwiftyAppLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE8C961FB51E580063E8FD /* SwiftyAppLockTests.swift */; };
 		14FE8C991FB51E580063E8FD /* SwiftyAppLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +35,12 @@
 
 /* Begin PBXFileReference section */
 		143AAC6E1FB52D0D00DC6461 /* CommonCrypto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonCrypto; sourceTree = "<group>"; };
+		14AA75D11FB7745500160F29 /* PINItemLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINItemLayer.swift; sourceTree = "<group>"; };
+		14AA75D31FB7790800160F29 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		14D517F01FB7582500AA2CA8 /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
+		14D517F21FB75A6900AA2CA8 /* AppLockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppLockView.xib; sourceTree = "<group>"; };
+		14D517F41FB7684900AA2CA8 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
+		14D517F61FB76AEA00AA2CA8 /* PINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINView.swift; sourceTree = "<group>"; };
 		14FE8C881FB51E580063E8FD /* SwiftyAppLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyAppLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAppLock.h; sourceTree = "<group>"; };
 		14FE8C8C1FB51E580063E8FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +78,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14D517EF1FB757CA00AA2CA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				14D517F01FB7582500AA2CA8 /* AppLockView.swift */,
+				14D517F21FB75A6900AA2CA8 /* AppLockView.xib */,
+				14D517F61FB76AEA00AA2CA8 /* PINView.swift */,
+				14AA75D11FB7745500160F29 /* PINItemLayer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		14FE8C7E1FB51E580063E8FD = {
 			isa = PBXGroup;
 			children = (
@@ -89,9 +112,12 @@
 		14FE8C8A1FB51E580063E8FD /* SwiftyAppLock */ = {
 			isa = PBXGroup;
 			children = (
+				14D517EF1FB757CA00AA2CA8 /* Views */,
 				143AAC6E1FB52D0D00DC6461 /* CommonCrypto */,
 				14FE8CA21FB51FAB0063E8FD /* AppLock.swift */,
 				14FE8CA41FB521280063E8FD /* Crypto.swift */,
+				14AA75D31FB7790800160F29 /* Colors.swift */,
+				14D517F41FB7684900AA2CA8 /* Collections.swift */,
 				14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */,
 				14FE8C8C1FB51E580063E8FD /* Info.plist */,
 			);
@@ -226,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D517F31FB75A6900AA2CA8 /* AppLockView.xib in Resources */,
 				143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,8 +355,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D517F11FB7582500AA2CA8 /* AppLockView.swift in Sources */,
 				14FE8CA51FB521280063E8FD /* Crypto.swift in Sources */,
+				14AA75D21FB7745500160F29 /* PINItemLayer.swift in Sources */,
+				14AA75D41FB7790800160F29 /* Colors.swift in Sources */,
+				14D517F71FB76AEA00AA2CA8 /* PINView.swift in Sources */,
 				14FE8CA31FB51FAB0063E8FD /* AppLock.swift in Sources */,
+				14D517F51FB7684900AA2CA8 /* Collections.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

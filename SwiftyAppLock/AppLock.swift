@@ -4,6 +4,8 @@ public class AppLock {
     
     public static let shared = AppLock()
     
+    var configs: Configs = Configs()
+    
     fileprivate static let pinHashKey: String = "al__pin_data"
     fileprivate var pinHash: String? {
         get {
@@ -27,7 +29,6 @@ public class AppLock {
     
     fileprivate static let lastUnlockKey: String = "al__pin_last_unlock_date"
     fileprivate var currentUnlockAttempt: Int = 0
-    fileprivate var maxUnlockAttempts: Int = 5
     fileprivate var lastUnlock: Date? {
         get {
             return UserDefaults.standard
@@ -40,4 +41,11 @@ public class AppLock {
     }
     
     fileprivate init() { }
+    
+    public class Configs {
+        
+        public var encryption: Crypto.Mode = .sha1
+        public var pinLength: Int = 4
+        public var maxUnlockAttempts: Int = 5
+    }
 }
