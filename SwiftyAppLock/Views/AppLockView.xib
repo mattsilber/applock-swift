@@ -4,13 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppLockView" customModule="SwiftyAppLock" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppLockView" customModule="Resources" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="s0x-wh-MHy" id="RX2-BE-lvL"/>
                 <outlet property="instructionsLabel" destination="hYs-9n-iNy" id="pIq-bG-Yi4"/>
@@ -20,12 +20,12 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="AppLockView" customModule="SwiftyAppLock" customModuleProvider="target">
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="AppLockView" customModule="Resources" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0x-wh-MHy">
-                    <rect key="frame" x="37" y="122" width="300" height="214.5"/>
+                    <rect key="frame" x="37" y="115" width="300" height="214.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvU-wP-Mdu">
                             <rect key="frame" x="150" y="163.5" width="150" height="43"/>
@@ -56,32 +56,31 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here are some instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYs-9n-iNy">
-                    <rect key="frame" x="59.5" y="142" width="255" height="21"/>
+                    <rect key="frame" x="59.5" y="135" width="255" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-ET-6L1" customClass="PINView" customModule="SwiftyAppLock" customModuleProvider="target">
-                    <rect key="frame" x="51.5" y="187" width="271" height="66.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-ET-6L1" customClass="PINView" customModule="Resources" customModuleProvider="target">
+                    <rect key="frame" x="51.5" y="180" width="271" height="66.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1:1.5" id="0ut-KB-bJS"/>
+                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:1.5" id="0ut-KB-bJS"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="width" secondItem="s0x-wh-MHy" secondAttribute="width" multiplier="0.85" id="33F-aq-ACW"/>
                 <constraint firstItem="cvU-wP-Mdu" firstAttribute="top" secondItem="f6n-ET-6L1" secondAttribute="bottom" constant="32" id="3xm-jf-xEU"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="centerX" secondItem="s0x-wh-MHy" secondAttribute="centerX" id="9Kt-mP-Fcj"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="B5T-0s-BPb"/>
                 <constraint firstItem="s0x-wh-MHy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="F2F-zj-wDJ"/>
-                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="G7A-2t-fKR"/>
+                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="G7A-2t-fKR"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="centerX" secondItem="s0x-wh-MHy" secondAttribute="centerX" id="OiR-rB-GJM"/>
                 <constraint firstItem="cvU-wP-Mdu" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.065" id="SK3-xh-f3w"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="width" secondItem="s0x-wh-MHy" secondAttribute="width" multiplier="0.9" constant="1" id="hq0-Oh-Zbd"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="top" secondItem="hYs-9n-iNy" secondAttribute="bottom" constant="24" id="uxW-PL-t5J"/>
                 <constraint firstItem="s0x-wh-MHy" firstAttribute="top" secondItem="hYs-9n-iNy" secondAttribute="bottom" constant="-41" id="zpN-ST-2eO"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>

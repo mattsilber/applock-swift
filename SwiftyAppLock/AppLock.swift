@@ -81,7 +81,7 @@ public class AppLock {
     
     fileprivate init() { }
     
-    public func attach(
+    @discardableResult public func attach(
         to viewController: UIViewController,
         withWindowStyle windowStyle: AppLockView.WindowStyle = .dialog,
         pinNotPresent: (() -> Void)? = nil,

@@ -34,7 +34,7 @@ public class AppLockView: UIView {
         let view = viewController.view
             .subviews
             .flatMap({ $0 as? AppLockView })
-            .first ?? AppLockView(frame: viewController.view.frame)
+            .first ?? instantiateNib()
         
         view.windowStyle = windowStyle
         view.theme = theme ?? view.theme
@@ -45,6 +45,21 @@ public class AppLockView: UIView {
         view.pinView.becomeFirstResponder()
         
         return view
+    }
+    
+    public class func instantiateNib() -> AppLockView {
+//        let bundlePath = Bundle(for: AppLockView.self)
+//            .path(forResource: "AppLockView", ofType: "bundle")!
+        
+        let bundle = Bundle(for: AppLockView.self)  // Bundle(path: bundlePath)!
+//        let bundle = Bundle.allBundles
+//            .filter({ $0.path(forResource: "AppLockView.xib", ofType: nil) != nil })
+////            .flatMap({ $0.path(forResource: "AppLockView.xib", ofType: nil) })
+////            .flatMap({ Bundle(path: $0) })
+//            .first!
+        
+            
+        return bundle.loadNibNamed("AppLockView", owner: self, options: nil)?.first as! AppLockView
     }
     
     public func set(instructions: String) {
