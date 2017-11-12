@@ -61,11 +61,11 @@ public class AppLock {
     }
     
     public var unlockRetryLimitExceeded: Bool {
-        return currentUnlockAttempt < configs.maxUnlockAttempts
+        return configs.maxUnlockAttempts <= currentUnlockAttempt
     }
     
     public var unlockRetryAllowed: Bool {
-        return unlockRetryLimitExceeded && (unlockRetryAllowedAtDate?.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970
+        return !unlockRetryLimitExceeded && (unlockRetryAllowedAtDate?.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970
     }
     
     public var limitExceededMessage: String {
@@ -94,12 +94,16 @@ public class AppLock {
             return nil
         }
         
+        handleLimitExceededTimeExpiration()
+        
         let view = AppLockView.attach(
             to: viewController,
             theme: theme,
             windowStyle: windowStyle,
             positiveAction: { view, pin in
                 view.resetItems()
+                
+                AppLock.shared.handleLimitExceededTimeExpiration()
                 
                 guard AppLock.shared.unlockRetryAllowed else { return }
                 
@@ -123,7 +127,7 @@ public class AppLock {
                 AppLock.shared.lastUnlockDate = Date()
                 AppLock.shared.currentUnlockAttempt = 0
                 
-                unlockSuccess?()
+                view.dismiss(withCompletion: unlockSuccess)
             },
             negativeAction: { view in
                 unlockAbortRequested(view)
@@ -186,13 +190,13 @@ public class AppLock {
                     return
                 }
                 
-                AppLockView.attach(
+                let confirmView = AppLockView.attach(
                     to: viewController,
                     theme: AppLock.shared.theme,
                     windowStyle: windowStyle,
                     positiveAction: { view2, pin2 in
                         let secondPin = Crypto.encrypt(
-                            string: pin1,
+                            string: pin2,
                             withMode: AppLock.shared.configs.encryption)
                         
                         guard let first = firstPin,
@@ -217,14 +221,24 @@ public class AppLock {
                     negativeAction: { view2 in
                         view2.dismiss(withCompletion: creationAborted)
                     })
+                
+                confirmView.set(instructions: AppLock.shared.messages.createConfirm)
             },
             negativeAction: { view in
                 view.dismiss(withCompletion: creationAborted)
             })
         
-        view.set(instructions: messages.create)
+        view.set(instructions: instructionMessage)
         
         return view
+    }
+    
+    fileprivate func handleLimitExceededTimeExpiration() {
+        guard let unlockedAt = unlockRetryAllowedAtDate,
+            unlockedAt.timeIntervalSince1970 < Date().timeIntervalSince1970 else { return }
+        
+        self.unlockRetryLockedAtDate = nil
+        self.currentUnlockAttempt = 0
     }
     
     fileprivate func pinMatches(unencryptedPin: String) -> Bool {
@@ -233,7 +247,14 @@ public class AppLock {
         return stored == Crypto.encrypt(string: unencryptedPin, withMode: configs.encryption)
     }
     
-    public class Configs {
+    public func clearPINData() {
+        self.pinHash = nil
+        self.lastUnlockDate = nil
+        self.unlockRetryLockedAtDate = nil
+        self.currentUnlockAttempt = 0
+    }
+    
+    open class Configs {
         
         public var encryption: Crypto.Mode = .sha1
         public var pinLength: Int = 4
@@ -241,7 +262,7 @@ public class AppLock {
         public var lockoutDurationSeconds: Double = 60 * 5
     }
     
-    public class Messages {
+    open class Messages {
         
         public var create: String = "Create a PIN to lock this app"
         public var createConfirm: String = "Re-enter PIN to confirm"

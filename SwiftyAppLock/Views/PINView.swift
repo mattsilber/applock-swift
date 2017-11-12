@@ -137,7 +137,7 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
         becomeFirstResponder()
     }
     
-    public class Theme {
+    open class Theme {
         
         public var backgroundColor: UIColor = .white
         
@@ -160,5 +160,7 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
         public var characterMask: String? = "*"
         public var characterEmptyValue: String = ""
         public var characterCount: Int = 4
+        
+        public init() { }
     }
 }

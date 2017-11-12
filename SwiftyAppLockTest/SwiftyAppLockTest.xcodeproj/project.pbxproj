@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		149F62D01FB905180002B5F0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F62CF1FB905180002B5F0 /* Colors.swift */; };
+		149F62D21FB9057F0002B5F0 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F62D11FB9057F0002B5F0 /* Strings.swift */; };
 		14AA75E21FB7BA1800160F29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75E11FB7BA1800160F29 /* AppDelegate.swift */; };
 		14AA75E41FB7BA1800160F29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75E31FB7BA1800160F29 /* ViewController.swift */; };
 		14AA75E71FB7BA1800160F29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14AA75E51FB7BA1800160F29 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		00C3432459B14D292C067B85 /* Pods_SwiftyAppLockTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyAppLockTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		149F62CF1FB905180002B5F0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		149F62D11FB9057F0002B5F0 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		14AA75DE1FB7BA1800160F29 /* SwiftyAppLockTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyAppLockTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AA75E11FB7BA1800160F29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14AA75E31FB7BA1800160F29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				14AA75E11FB7BA1800160F29 /* AppDelegate.swift */,
 				14AA75E31FB7BA1800160F29 /* ViewController.swift */,
 				14AA75E51FB7BA1800160F29 /* Main.storyboard */,
+				149F62CF1FB905180002B5F0 /* Colors.swift */,
+				149F62D11FB9057F0002B5F0 /* Strings.swift */,
 				14AA75E81FB7BA1800160F29 /* Assets.xcassets */,
 				14AA75EA1FB7BA1800160F29 /* LaunchScreen.storyboard */,
 				14AA75ED1FB7BA1800160F29 /* Info.plist */,
@@ -459,6 +465,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				14AA75E41FB7BA1800160F29 /* ViewController.swift in Sources */,
+				149F62D01FB905180002B5F0 /* Colors.swift in Sources */,
+				149F62D21FB9057F0002B5F0 /* Strings.swift in Sources */,
 				14AA75E21FB7BA1800160F29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

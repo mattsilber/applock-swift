@@ -78,7 +78,7 @@ public class AppLockView: UIView {
         
         switch windowStyle {
         case .dialog:
-            backgroundColor = UIColor.blue.withAlphaComponent(0.45)
+            backgroundColor = UIColor.black.withAlphaComponent(0.45)
         case .fullscreen:
             backgroundColor = theme.containerBackgroundColor
         }
@@ -132,7 +132,7 @@ public class AppLockView: UIView {
         case fullscreen
     }
     
-    public class Theme {
+    open class Theme {
         
         public var containerBackgroundColor: UIColor = .white
         public var containerCornerRadius: CGFloat = 6
@@ -147,5 +147,7 @@ public class AppLockView: UIView {
         public var fontName: String = "Helvetica Neue"
         
         public var items: PINView.Theme = PINView.Theme()
+        
+        public init() { }
     }
 }
