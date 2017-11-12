@@ -31,17 +31,8 @@ class PINItemLayer {
             alpha: disabledValues[0] + ((enabledValues[0] - disabledValues[0]) * radiusRangePercent))
     }
     
-    fileprivate var font: UIFont = UIFont.systemFont(ofSize: 16) {
-        didSet {
-            guard let theme = theme else { return }
-            
-            fontAttributes = [
-                NSAttributedStringKey.font: font,
-                NSAttributedStringKey.foregroundColor: theme.textColorEnabled
-            ]
-        }
-    }
-    fileprivate var fontAttributes: [NSAttributedStringKey: Any] = [:]
+    fileprivate var font: UIFont
+    fileprivate var fontAttributes: [NSAttributedStringKey: Any]
     
     fileprivate var stateAnimationStart: CFTimeInterval?
     fileprivate var stateAnimationRadiusStart: CGFloat = 1
@@ -60,6 +51,10 @@ class PINItemLayer {
         self.value = theme.characterEmptyValue
         self.redrawRequired = redrawRequired
         self.font = theme.font
+        self.fontAttributes = [
+            NSAttributedStringKey.font: font,
+            NSAttributedStringKey.foregroundColor: theme.textColorEnabled
+        ]
     }
     
     func draw(withContext context: CGContext) {

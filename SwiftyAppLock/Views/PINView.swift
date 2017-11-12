@@ -58,7 +58,7 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
         let itemDiameter = itemRadius * 2
         let itemSpacing = UIScreen.main.bounds.width * theme.spacing
         let containerWidth = (CGFloat(theme.characterCount) * itemDiameter) + (itemSpacing * CGFloat(theme.characterCount - 1))
-        let startingCenterX = (self.bounds.midX) - (containerWidth / 2) + itemRadius + (itemSpacing / 2)
+        let startingCenterX = (self.bounds.midX) - (containerWidth / 2) + itemRadius
         
         self.itemLayers = (0..<theme.characterCount)
             .map({
@@ -158,7 +158,7 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
         
         public var spacing: CGFloat = 0.0225
         public var characterMask: String? = "*"
-        public var characterEmptyValue: String = "-"
+        public var characterEmptyValue: String = ""
         public var characterCount: Int = 4
     }
 }
