@@ -2,16 +2,16 @@ import UIKit
 
 open class PINView: UIView, UIKeyInput {
     
-    var theme: Theme = Theme()
+    fileprivate var theme: Theme = Theme()
     
     fileprivate var itemData: [String] = []
     fileprivate var itemLayers: [PINItemLayer] = []
     
-    var itemsFull: Bool {
+    public var itemsFull: Bool {
         return items.count == theme.characterCount
     }
     
-    var items: String {
+    public var items: String {
         return itemData.joined(separator: "")
     }
     
@@ -19,21 +19,36 @@ open class PINView: UIView, UIKeyInput {
         return 0 < itemData.count
     }
     
+    open override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    open override var canBecomeFocused: Bool {
+        return true
+    }
+    
+    open func configure(theme: Theme) {
+        self.theme = theme
+        self.isUserInteractionEnabled = true
+        self.contentMode = .redraw
+        self.resetDrawPositions()
+        
+        addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(viewTapped)))
+    }
+    
     open func reset() {
         self.itemData = []
         self.resetDrawPositions()
-        self.setNeedsDisplay()
     }
     
     open func resetDrawPositions() {
-        let itemRadius = UIScreen.main.bounds.width * theme.radiusEnabled
+        let itemRadius = frame.width * theme.radiusEnabled
         let itemDiameter = itemRadius * 2
-        let containerWidth = CGFloat(theme.characterCount) * itemDiameter + (theme.spacing * CGFloat(theme.characterCount - 1))
-        let startingCenterX = (UIScreen.main.bounds.width / 2) - (containerWidth / 2) + itemRadius
-        
-        self.itemLayers.forEach({
-            $0.removeFromSuperlayer()
-        })
+        let containerWidth = (CGFloat(theme.characterCount) * itemDiameter) + (theme.spacing * CGFloat(theme.characterCount - 1))
+        let startingCenterX = (self.bounds.midX) - (containerWidth / 2) + itemRadius + (theme.spacing / 2)
         
         self.itemLayers = (0..<theme.characterCount)
             .map({
@@ -43,11 +58,16 @@ open class PINView: UIView, UIKeyInput {
                     x: startingCenterX + (itemDiameter * index) + (theme.spacing * index),
                     y: self.bounds.height / 2)
             })
-            .map({ PINItemLayer(center: $0, theme: self.theme) })
+            .map({
+                PINItemLayer(
+                    center: $0,
+                    theme: self.theme,
+                    redrawRequired: { [weak self] in
+                        self?.setNeedsDisplay()
+                    })
+            })
         
-        self.itemLayers.forEach({
-            self.layer.addSublayer($0)
-        })
+        self.notifyTextChanged()
     }
     
     public func insertText(_ text: String) {
@@ -58,6 +78,8 @@ open class PINView: UIView, UIKeyInput {
             
             self.itemData.append(element)
         })
+        
+        self.notifyTextChanged()
     }
     
     public func deleteBackward() {
@@ -66,13 +88,17 @@ open class PINView: UIView, UIKeyInput {
         self.itemData = itemData.take(
             fromIndex: 0,
             size: itemData.count - 1)
+        
+        self.notifyTextChanged()
     }
     
     public func notifyTextChanged() {
         itemLayers.enumerated()
             .forEach({
                 guard let value = itemData.take(index: $0.offset) else {
-                    $0.element.set(value: "", active: false)
+                    $0.element.set(
+                        value: theme.characterEmptyValue,
+                        active: false)
                     
                     return
                 }
@@ -81,9 +107,29 @@ open class PINView: UIView, UIKeyInput {
                     value: theme.characterMask ?? value,
                     active: true)
             })
+        
+        self.setNeedsDisplay()
+    }
+    
+    open override func draw(_ rect: CGRect) {
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        context.setFillColor(theme.backgroundColor.cgColor)
+        context.fill(self.bounds)
+        context.setShouldAntialias(true)
+        
+        itemLayers.forEach({
+            $0.draw(withContext: context)
+        })
+    }
+    
+    @objc fileprivate func viewTapped() {
+        becomeFirstResponder()
     }
     
     public class Theme {
+        
+        public var backgroundColor: UIColor = .red
         
         public var stateAnimationDurationSeconds: Double = 0.275
         public var itemBackgroundColorEnabled: UIColor = .blue
@@ -102,6 +148,7 @@ open class PINView: UIView, UIKeyInput {
         
         public var spacing: CGFloat = 0.0325
         public var characterMask: String? = "*"
+        public var characterEmptyValue: String = "-"
         public var characterCount: Int = 4
     }
 }

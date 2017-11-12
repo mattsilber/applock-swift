@@ -52,6 +52,7 @@ public class AppLockView: UIView {
         }
         
         let view = instantiateNib()
+        view.frame = viewController.view.frame
         viewController.view.addSubview(view)
         
         return view
@@ -87,6 +88,8 @@ public class AppLockView: UIView {
         instructionsLabel.textColor = theme.instructionsTextColor
         instructionsLabel.font = UIFont(name: theme.fontName, size: theme.instructionsFontSize)
             ?? UIFont.systemFont(ofSize: theme.instructionsFontSize)
+        
+        pinView.configure(theme: theme.items)
         
         positiveButton.setTitleColor(theme.buttonPositiveTextColor, for: .normal)
         positiveButton.layer.cornerRadius = positiveButton.frame.height / 2

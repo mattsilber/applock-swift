@@ -1,6 +1,6 @@
 import UIKit
 
-class PINItemLayer: CALayer {
+class PINItemLayer {
     
     fileprivate var center: CGPoint = CGPoint.zero
     fileprivate var theme: PINView.Theme?
@@ -37,7 +37,7 @@ class PINItemLayer: CALayer {
             
             fontAttributes = [
                 NSAttributedStringKey.font: font,
-                NSAttributedStringKey.foregroundColor: theme.textColorEnabled,
+                NSAttributedStringKey.foregroundColor: theme.textColorEnabled
             ]
         }
     }
@@ -47,30 +47,23 @@ class PINItemLayer: CALayer {
     fileprivate var stateAnimationRadiusStart: CGFloat = 1
     fileprivate var stateAnimationRadiusTarget: CGFloat = 1
     
-    var value: String = "" {
-        didSet { setNeedsDisplay() }
-    }
+    var value: String = ""
+    var redrawRequired: (() -> Void)?
     
-    convenience init(
+    init(
         center: CGPoint,
-        theme: PINView.Theme) {
-        self.init()
+        theme: PINView.Theme,
+        redrawRequired: (() -> Void)?) {
         
         self.center = center
         self.theme = theme
+        self.value = theme.characterEmptyValue
+        self.redrawRequired = redrawRequired
         self.font = theme.font
     }
     
-    override init() {
-        super.init()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init()
-    }
-    
-    override func draw(in ctx: CGContext) {
-        ctx.setFillColor(color.cgColor)
+    func draw(withContext context: CGContext) {
+        context.setFillColor(color.cgColor)
         
         let path = UIBezierPath(
             arcCenter: center,
@@ -81,8 +74,16 @@ class PINItemLayer: CALayer {
         
         path.fill()
         
-        (value as NSString)
-            .draw(at: center, withAttributes: fontAttributes)
+        let value = self.value as NSString
+        
+        let size = value.size(withAttributes: fontAttributes)
+        let centeredRect = CGRect(
+            x: center.x - (size.width / 2),
+            y: center.y - (size.height / 2),
+            width: size.width,
+            height: size.height)
+        
+        value.draw(in: centeredRect, withAttributes: fontAttributes)
     }
     
     @objc func stateAnimationUpdate(_ link: CADisplayLink) {
@@ -101,7 +102,8 @@ class PINItemLayer: CALayer {
         }
         
         self.radiusRangePercent = stateAnimationRadiusStart + (CGFloat(Darwin.atan(Float(linkTime) * 1.56)) * (stateAnimationRadiusTarget - stateAnimationRadiusStart))
-        self.setNeedsDisplay()
+        
+        self.redrawRequired?()
     }
     
     public func set(value: String, active: Bool) {
