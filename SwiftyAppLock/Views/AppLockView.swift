@@ -31,11 +31,7 @@ public class AppLockView: UIView {
         positiveAction: @escaping (AppLockView, String) -> Void,
         negativeAction: @escaping (AppLockView) -> Void) -> AppLockView {
         
-        let view = viewController.view
-            .subviews
-            .flatMap({ $0 as? AppLockView })
-            .first ?? instantiateNib()
-        
+        let view = aquireAppLockView(in: viewController)
         view.windowStyle = windowStyle
         view.theme = theme ?? view.theme
         view.positiveAction = positiveAction
@@ -43,6 +39,20 @@ public class AppLockView: UIView {
         view.resetItems()
         
         view.pinView.becomeFirstResponder()
+        
+        return view
+    }
+    
+    fileprivate static func aquireAppLockView(in viewController: UIViewController) -> AppLockView {
+        if let existing = viewController.view
+            .subviews
+            .flatMap({ $0 as? AppLockView })
+            .first {
+            return existing
+        }
+        
+        let view = instantiateNib()
+        viewController.view.addSubview(view)
         
         return view
     }
