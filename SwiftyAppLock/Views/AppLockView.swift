@@ -48,18 +48,8 @@ public class AppLockView: UIView {
     }
     
     public class func instantiateNib() -> AppLockView {
-//        let bundlePath = Bundle(for: AppLockView.self)
-//            .path(forResource: "AppLockView", ofType: "bundle")!
-        
-        let bundle = Bundle(for: AppLockView.self)  // Bundle(path: bundlePath)!
-//        let bundle = Bundle.allBundles
-//            .filter({ $0.path(forResource: "AppLockView.xib", ofType: nil) != nil })
-////            .flatMap({ $0.path(forResource: "AppLockView.xib", ofType: nil) })
-////            .flatMap({ Bundle(path: $0) })
-//            .first!
-        
-            
-        return bundle.loadNibNamed("AppLockView", owner: self, options: nil)?.first as! AppLockView
+        return Bundle.appLock
+            .loadNibNamed("AppLockView", owner: self, options: nil)?.first as! AppLockView
     }
     
     public func set(instructions: String) {

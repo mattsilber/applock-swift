@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12ED5054A03ECA7A15C0DFA6 /* Pods_SwiftyAppLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */; };
 		143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */ = {isa = PBXBuildFile; fileRef = 143AAC6E1FB52D0D00DC6461 /* CommonCrypto */; };
+		149F62CE1FB8C59E0002B5F0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F62CD1FB8C59E0002B5F0 /* Bundle.swift */; };
 		14AA75D21FB7745500160F29 /* PINItemLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D11FB7745500160F29 /* PINItemLayer.swift */; };
 		14AA75D41FB7790800160F29 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D31FB7790800160F29 /* Colors.swift */; };
 		14D517F11FB7582500AA2CA8 /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D517F01FB7582500AA2CA8 /* AppLockView.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		143AAC6E1FB52D0D00DC6461 /* CommonCrypto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonCrypto; sourceTree = "<group>"; };
+		149F62CD1FB8C59E0002B5F0 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		14AA75D11FB7745500160F29 /* PINItemLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINItemLayer.swift; sourceTree = "<group>"; };
 		14AA75D31FB7790800160F29 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		14D517F01FB7582500AA2CA8 /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				143AAC6E1FB52D0D00DC6461 /* CommonCrypto */,
 				14FE8CA21FB51FAB0063E8FD /* AppLock.swift */,
 				14FE8CA41FB521280063E8FD /* Crypto.swift */,
+				149F62CD1FB8C59E0002B5F0 /* Bundle.swift */,
 				14AA75D31FB7790800160F29 /* Colors.swift */,
 				14D517F41FB7684900AA2CA8 /* Collections.swift */,
 				14FE8C8B1FB51E580063E8FD /* SwiftyAppLock.h */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D517F11FB7582500AA2CA8 /* AppLockView.swift in Sources */,
+				149F62CE1FB8C59E0002B5F0 /* Bundle.swift in Sources */,
 				14FE8CA51FB521280063E8FD /* Crypto.swift in Sources */,
 				14AA75D21FB7745500160F29 /* PINItemLayer.swift in Sources */,
 				14AA75D41FB7790800160F29 /* Colors.swift in Sources */,

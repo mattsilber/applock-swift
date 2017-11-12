@@ -15,8 +15,12 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftyAppLock/**/*.swift'
 
   s.preserve_paths = 'SwiftyAppLock/CommonCrypto/module.modulemap'
-  s.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/SwiftyAppLock/CommonCrypto' }
-  s.resource_bundles = { 'Resources' => ['SwiftyAppLock/**/*.{xib,xcassets}'] }
+  s.xcconfig = { 
+    'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/SwiftyAppLock/CommonCrypto'
+  }
+  s.resource_bundles = {
+    'SwiftyAppLock' => ['SwiftyAppLock/**/*.{xib,xcassets}']
+  }
  
   s.ios.deployment_target = '8.0'
   
