@@ -44,6 +44,12 @@ open class PINView: UIView, UIKeyInput {
         self.resetDrawPositions()
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        resetDrawPositions()
+    }
+    
     open func resetDrawPositions() {
         let itemRadius = frame.width * theme.radiusEnabled
         let itemDiameter = itemRadius * 2
