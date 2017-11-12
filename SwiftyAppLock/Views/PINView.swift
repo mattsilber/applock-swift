@@ -1,11 +1,14 @@
 import UIKit
 
-open class PINView: UIView, UIKeyInput {
+open class PINView: UIView, UIKeyInput, UITextInputTraits {
     
     fileprivate var theme: Theme = Theme()
     
     fileprivate var itemData: [String] = []
     fileprivate var itemLayers: [PINItemLayer] = []
+    
+    public var returnKeyType: UIReturnKeyType = .done
+    public var keyboardType: UIKeyboardType = .numberPad
     
     public var itemsFull: Bool {
         return items.count == theme.characterCount
@@ -51,17 +54,18 @@ open class PINView: UIView, UIKeyInput {
     }
     
     open func resetDrawPositions() {
-        let itemRadius = frame.width * theme.radiusEnabled
+        let itemRadius = UIScreen.main.bounds.width * theme.radiusEnabled
         let itemDiameter = itemRadius * 2
-        let containerWidth = (CGFloat(theme.characterCount) * itemDiameter) + (theme.spacing * CGFloat(theme.characterCount - 1))
-        let startingCenterX = (self.bounds.midX) - (containerWidth / 2) + itemRadius + (theme.spacing / 2)
+        let itemSpacing = UIScreen.main.bounds.width * theme.spacing
+        let containerWidth = (CGFloat(theme.characterCount) * itemDiameter) + (itemSpacing * CGFloat(theme.characterCount - 1))
+        let startingCenterX = (self.bounds.midX) - (containerWidth / 2) + itemRadius + (itemSpacing / 2)
         
         self.itemLayers = (0..<theme.characterCount)
             .map({
                 let index = CGFloat($0)
                 
                 return CGPoint(
-                    x: startingCenterX + (itemDiameter * index) + (theme.spacing * index),
+                    x: startingCenterX + (itemDiameter * index) + (itemSpacing * index),
                     y: self.bounds.height / 2)
             })
             .map({
@@ -135,7 +139,7 @@ open class PINView: UIView, UIKeyInput {
     
     public class Theme {
         
-        public var backgroundColor: UIColor = .red
+        public var backgroundColor: UIColor = .white
         
         public var stateAnimationDurationSeconds: Double = 0.275
         public var itemBackgroundColorEnabled: UIColor = .blue
@@ -149,10 +153,10 @@ open class PINView: UIView, UIKeyInput {
             return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
         }
         
-        public var radiusEnabled: CGFloat = 0.075
+        public var radiusEnabled: CGFloat = 0.055
         public var radiusDisabled: CGFloat = 0.025
         
-        public var spacing: CGFloat = 0.0325
+        public var spacing: CGFloat = 0.0225
         public var characterMask: String? = "*"
         public var characterEmptyValue: String = "-"
         public var characterCount: Int = 4

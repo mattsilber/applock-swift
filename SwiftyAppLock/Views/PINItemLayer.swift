@@ -94,6 +94,7 @@ class PINItemLayer {
         
         guard linkTime < 1 else {
             self.radiusRangePercent = stateAnimationRadiusTarget
+            self.stateAnimationStart = nil
             
             link.remove(from: .current, forMode: .commonModes)
             link.invalidate()
@@ -110,6 +111,7 @@ class PINItemLayer {
         self.value = value
         self.stateAnimationRadiusStart = radiusRangePercent
         self.stateAnimationRadiusTarget = active ? 1 : 0
+        self.stateAnimationStart = CACurrentMediaTime()
         
         let link = CADisplayLink(
             target: self,
