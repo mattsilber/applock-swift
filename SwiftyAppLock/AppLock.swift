@@ -272,12 +272,15 @@ public class AppLock {
     public static func generateTheme(
         primaryColor: UIColor,
         primaryColorDisabled: UIColor? = nil,
-        secondaryColor: UIColor) -> AppLockView.Theme {
+        secondaryColor: UIColor,
+        containerBackgroundColor: UIColor? = nil) -> AppLockView.Theme {
         
         let theme = AppLockView.Theme()
         theme.instructionsTextColor = secondaryColor
         theme.buttonNegativeTextColor = secondaryColor
         theme.buttonPositiveTextColor = primaryColor
+        theme.containerBackgroundColor = containerBackgroundColor ?? theme.containerBackgroundColor
+        theme.items.backgroundColor = containerBackgroundColor ?? theme.items.backgroundColor
         theme.items.itemBackgroundColorDisabled = primaryColorDisabled ?? primaryColor
         theme.items.itemBackgroundColorEnabled = primaryColor
         

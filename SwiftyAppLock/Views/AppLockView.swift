@@ -11,12 +11,16 @@ public class AppLockView: UIView {
     @IBOutlet weak var negativeButton: UIButton!
     
     var windowStyle: WindowStyle = .dialog {
-        didSet { updateWindowTheme() }
+        didSet {
+            updateWindowTheme()
+        }
     }
     
     var theme: Theme = Theme() {
         didSet {
             updateContentTheme()
+            updateWindowTheme()
+            
             setNeedsDisplay()
         }
     }
@@ -32,8 +36,8 @@ public class AppLockView: UIView {
         negativeAction: @escaping (AppLockView) -> Void) -> AppLockView {
         
         let view = aquireAppLockView(in: viewController)
-        view.windowStyle = windowStyle
         view.theme = theme ?? view.theme
+        view.windowStyle = windowStyle
         view.positiveAction = positiveAction
         view.negativeAction = negativeAction
         view.resetItems()
