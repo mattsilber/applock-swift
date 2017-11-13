@@ -5,6 +5,8 @@ SwiftyAppLock - the iOS version of https://github.com/mattsilber/applock.git
 pod 'SwiftyAppLock', :git => 'git@github.com:mattsilber/applock-swift.git', :tag => '1.0.1'
 ```
 
+![SwiftyAppLock Sample](https://github.com/mattsilber/applock-swift/raw/master/swiftyapplock.gif)
+
 ### Usage
 
 #### PIN Creation
