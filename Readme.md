@@ -45,7 +45,7 @@ AppLock.shared.attach(
 If you want to prevent an entire UIViewController from being displayed based on a timed expiration, you can do something like:
 
 ```swift
-obverride func viewDidAppear(_ animated: Bool) {
+override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     AppLock.shared.attach(
@@ -54,6 +54,7 @@ obverride func viewDidAppear(_ animated: Bool) {
         unlockAbortRequested: { [weak self] appLockView  in
             self?.navigationController?.popViewController()
         })
+}
 ```
 
 #### Themes
