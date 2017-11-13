@@ -25,9 +25,8 @@ public class AppLock {
     }
     
     fileprivate var currentUnlockAttempt: Int = 0
-    public var unlockDurationSeconds: TimeInterval = 60 * 15
     public var unlockRequired: Bool {
-        return pinExists && unlockDurationSeconds < Date().timeIntervalSince1970 - (lastUnlockDate?.timeIntervalSince1970 ?? 0)
+        return pinExists && configs.sessionExpirationSeconds < Date().timeIntervalSince1970 - (lastUnlockDate?.timeIntervalSince1970 ?? 0)
     }
     
     fileprivate static let lastUnlockKey: String = "al__pin_last_unlock_date"
@@ -83,6 +82,7 @@ public class AppLock {
     
     @discardableResult public func attach(
         to viewController: UIViewController,
+        authenticatingWith authScheme: AttachAuthenticationScheme = .timedExpiration(seconds: AppLock.shared.configs.sessionExpirationSeconds),
         withWindowStyle windowStyle: AppLockView.WindowStyle = .dialog,
         pinNotPresent: (() -> Void)? = nil,
         unlockAbortRequested: @escaping (AppLockView) -> Void,
@@ -96,6 +96,16 @@ public class AppLock {
         
         handleLimitExceededTimeExpiration()
         
+        switch authScheme {
+        case .always:
+            break
+        case .timedExpiration(let seconds):
+            guard (lastUnlockDate?.timeIntervalSince1970 ?? 0) < Date().timeIntervalSince1970 - seconds else {
+                unlockSuccess?()
+                return nil
+            }
+        }
+        
         let view = AppLockView.attach(
             to: viewController,
             theme: theme,
@@ -106,6 +116,11 @@ public class AppLock {
                 AppLock.shared.handleLimitExceededTimeExpiration()
                 
                 guard AppLock.shared.unlockRetryAllowed else { return }
+                
+                guard pin.characters.count == AppLock.shared.configs.pinLength else {
+                    view.set(instructions: AppLock.shared.messages.errorInsufficientDigits)
+                    return
+                }
                 
                 guard AppLock.shared.pinMatches(unencryptedPin: pin) else {
                     AppLock.shared.currentUnlockAttempt += 1
@@ -254,27 +269,52 @@ public class AppLock {
         self.currentUnlockAttempt = 0
     }
     
+    public static func generateTheme(
+        primaryColor: UIColor,
+        primaryColorDisabled: UIColor? = nil,
+        secondaryColor: UIColor) -> AppLockView.Theme {
+        
+        let theme = AppLockView.Theme()
+        theme.instructionsTextColor = secondaryColor
+        theme.buttonNegativeTextColor = secondaryColor
+        theme.buttonPositiveTextColor = primaryColor
+        theme.items.itemBackgroundColorDisabled = primaryColorDisabled ?? primaryColor
+        theme.items.itemBackgroundColorEnabled = primaryColor
+        
+        return theme
+    }
+    
+    public enum AttachAuthenticationScheme {
+        
+        case always
+        case timedExpiration(seconds: Double)
+    }
+    
     open class Configs {
         
         public var encryption: Crypto.Mode = .sha1
         public var pinLength: Int = 4
         public var maxUnlockAttempts: Int = 5
+        public var sessionExpirationSeconds: Double = 60 * 15
         public var lockoutDurationSeconds: Double = 60 * 5
     }
     
     open class Messages {
         
-        public var create: String = "Create a PIN to lock this app"
-        public var createConfirm: String = "Re-enter PIN to confirm"
+        public var create: String = "Choose your PIN."
+        public var createConfirm: String = "Re-enter your PIN to confirm."
         
-        public var unlock: String = "Enter your PIN to unlock"
+        public var unlock: String = "Enter your PIN to continue."
         
-        public var errorNoPin: String = "There is nothing to unlock"
-        public var errorMismatch: String = "PIN does not match"
-        public var errorCreateMismatch: String = "PIN does not match. Re-enter"
-        public var errorInsufficientDigits: String = "Incorrect PIN length"
+        public var buttonNegative: String = "Cancel"
+        public var buttonPositive: String = "Submit"
+        
+        public var errorNoPin: String = "There is no lock!"
+        public var errorMismatch: String = "PIN does not match."
+        public var errorCreateMismatch: String = "PINs do not match. Start over."
+        public var errorInsufficientDigits: String = "Incorrect PIN length. Try again."
         public var errorRetryLimitExceeded: String = "You failed too many times. Please try again after %1$@"
         public var errorRetryLimitExceededDateFormat: String = "MM dd, yyyy hh:mm aa"
-        public var errorPinAlreadyExists: String = "A PIN already exists"
+        public var errorPinAlreadyExists: String = "A PIN already exists, you must unlock before you can continue."
     }
 }

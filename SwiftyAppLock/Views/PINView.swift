@@ -142,12 +142,12 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
         public var backgroundColor: UIColor = .white
         
         public var stateAnimationDurationSeconds: Double = 0.275
-        public var itemBackgroundColorEnabled: UIColor = .blue
-        public var itemBackgroundColorDisabled: UIColor = .blue
+        public var itemBackgroundColorEnabled: UIColor = UIColor(hexRRGGBB: "#3498db")
+        public var itemBackgroundColorDisabled: UIColor = UIColor(hexRRGGBB: "#2c3e50")
         
         public var textColorEnabled: UIColor = .white
         public var textColorDisabled: UIColor = .white
-        public var fontSize: CGFloat = 16
+        public var fontSize: CGFloat = 24
         public var fontName: String = "Helvetica Neue"
         public var font: UIFont {
             return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)

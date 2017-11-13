@@ -92,11 +92,13 @@ public class AppLockView: UIView {
         pinView.configure(theme: theme.items)
         
         positiveButton.setTitleColor(theme.buttonPositiveTextColor, for: .normal)
+        positiveButton.setTitle(AppLock.shared.messages.buttonPositive, for: .normal)
         positiveButton.layer.cornerRadius = positiveButton.frame.height / 2
         positiveButton.layer.borderColor = theme.buttonPositiveTextColor.cgColor
         positiveButton.layer.borderWidth = theme.buttonBorderWidth
         
         negativeButton.setTitleColor(theme.buttonNegativeTextColor, for: .normal)
+        negativeButton.setTitle(AppLock.shared.messages.buttonNegative, for: .normal)
         negativeButton.layer.cornerRadius = negativeButton.frame.height / 2
         negativeButton.layer.borderColor = theme.buttonNegativeTextColor.cgColor
         negativeButton.layer.borderWidth = theme.buttonBorderWidth
@@ -137,12 +139,12 @@ public class AppLockView: UIView {
         public var containerBackgroundColor: UIColor = .white
         public var containerCornerRadius: CGFloat = 6
         
-        public var instructionsTextColor: UIColor = .darkGray
+        public var instructionsTextColor: UIColor = UIColor(hexRRGGBB: "#95a5a6")
         public var instructionsFontSize: CGFloat = 16
         
         public var buttonBorderWidth: CGFloat = 1
-        public var buttonPositiveTextColor: UIColor = .blue
-        public var buttonNegativeTextColor: UIColor = .lightGray
+        public var buttonPositiveTextColor: UIColor = UIColor(hexRRGGBB: "#3498db")
+        public var buttonNegativeTextColor: UIColor = UIColor(hexRRGGBB: "#95a5a6")
         
         public var fontName: String = "Helvetica Neue"
         
