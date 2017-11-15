@@ -10,6 +10,8 @@ public class AppLockView: UIView {
     @IBOutlet weak var positiveButton: UIButton!
     @IBOutlet weak var negativeButton: UIButton!
     
+    @IBOutlet weak var contentVerticalConstraint: NSLayoutConstraint!
+    
     var windowStyle: WindowStyle = .dialog {
         didSet {
             updateWindowTheme()
@@ -43,6 +45,23 @@ public class AppLockView: UIView {
         view.resetItems()
         
         view.pinView.becomeFirstResponder()
+        
+        NotificationCenter.default
+            .removeObserver(self)
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(keyboardWillAppear(_:)),
+                name: .UIKeyboardWillShow,
+                object: nil)
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(keyboardWillDisappear(_:)),
+                name: .UIKeyboardWillHide,
+                object: nil)
         
         return view
     }
@@ -130,6 +149,33 @@ public class AppLockView: UIView {
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         pinView.becomeFirstResponder()
+    }
+    
+    @objc open func keyboardWillAppear(_ notification: Notification) {
+        UIView.animate(
+            withDuration: 0.275,
+            animations: {
+                self.contentVerticalConstraint.isActive = false
+                self.layoutIfNeeded()
+            })
+    }
+    
+    @objc open func keyboardDoneTapped() {
+        self.pinView.endEditing(true)
+    }
+    
+    @objc open func keyboardWillDisappear(_ notification: Notification) {
+        UIView.animate(
+            withDuration: 0.275,
+            animations: {
+                self.contentVerticalConstraint.isActive = true
+                self.layoutIfNeeded()
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default
+            .removeObserver(self)
     }
     
     public enum WindowStyle {

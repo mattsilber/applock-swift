@@ -2,7 +2,7 @@ SwiftyAppLock - the iOS version of https://github.com/mattsilber/applock.git
 
 #### CocoaPods
 ```ruby
-pod 'SwiftyAppLock', :git => 'git@github.com:mattsilber/applock-swift.git', :tag => '1.0.1'
+pod 'SwiftyAppLock', :git => 'git@github.com:mattsilber/applock-swift.git', :tag => '1.0.2'
 ```
 
 ![SwiftyAppLock Sample](https://github.com/mattsilber/applock-swift/raw/master/swiftyapplock.gif)

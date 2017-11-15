@@ -62,6 +62,7 @@
             <constraints>
                 <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:1.5" id="0ut-KB-bJS"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="width" secondItem="s0x-wh-MHy" secondAttribute="width" multiplier="0.85" id="33F-aq-ACW"/>
+                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:2.5" priority="250" id="3bA-t3-CzJ"/>
                 <constraint firstItem="cvU-wP-Mdu" firstAttribute="top" secondItem="f6n-ET-6L1" secondAttribute="bottom" constant="32" id="3xm-jf-xEU"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="centerX" secondItem="s0x-wh-MHy" secondAttribute="centerX" id="9Kt-mP-Fcj"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="B5T-0s-BPb"/>
@@ -75,6 +76,7 @@
             </constraints>
             <connections>
                 <outlet property="containerView" destination="s0x-wh-MHy" id="F6c-sN-ipg"/>
+                <outlet property="contentVerticalConstraint" destination="0ut-KB-bJS" id="GBC-tJ-qnL"/>
                 <outlet property="instructionsLabel" destination="hYs-9n-iNy" id="Pn6-l1-vaF"/>
                 <outlet property="negativeButton" destination="JI1-Cw-vXa" id="hUP-gC-ZKB"/>
                 <outlet property="pinView" destination="f6n-ET-6L1" id="6oN-U8-hlI"/>
