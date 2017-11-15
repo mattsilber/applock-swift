@@ -47,18 +47,18 @@ public class AppLockView: UIView {
         view.pinView.becomeFirstResponder()
         
         NotificationCenter.default
-            .removeObserver(self)
+            .removeObserver(view)
         
         NotificationCenter.default
             .addObserver(
-                self,
+                view,
                 selector: #selector(keyboardWillAppear(_:)),
                 name: .UIKeyboardWillShow,
                 object: nil)
         
         NotificationCenter.default
             .addObserver(
-                self,
+                view,
                 selector: #selector(keyboardWillDisappear(_:)),
                 name: .UIKeyboardWillHide,
                 object: nil)
@@ -76,6 +76,8 @@ public class AppLockView: UIView {
         
         let view = instantiateNib()
         view.frame = viewController.view.frame
+        view.animateToKeyboardOpenState()
+        
         viewController.view.addSubview(view)
         
         return view
@@ -152,11 +154,15 @@ public class AppLockView: UIView {
     }
     
     @objc open func keyboardWillAppear(_ notification: Notification) {
+        animateToKeyboardOpenState()
+    }
+    
+    open func animateToKeyboardOpenState() {
         UIView.animate(
             withDuration: 0.275,
-            animations: {
-                self.contentVerticalConstraint.isActive = false
-                self.layoutIfNeeded()
+            animations: { [weak self] in
+                self?.contentVerticalConstraint.priority = UILayoutPriority(rawValue: 100)
+                self?.layoutIfNeeded()
             })
     }
     
@@ -167,10 +173,10 @@ public class AppLockView: UIView {
     @objc open func keyboardWillDisappear(_ notification: Notification) {
         UIView.animate(
             withDuration: 0.275,
-            animations: {
-                self.contentVerticalConstraint.isActive = true
-                self.layoutIfNeeded()
-        })
+            animations: { [weak self] in
+                self?.contentVerticalConstraint.priority = UILayoutPriority(rawValue: 750)
+                self?.layoutIfNeeded()
+            })
     }
     
     deinit {

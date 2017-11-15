@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SwiftyAppLock'
-  s.version = '1.0.2'
+  s.version = '1.0.3'
   s.license = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.summary = 'The Swift/iOS implementation of AppLock'
 

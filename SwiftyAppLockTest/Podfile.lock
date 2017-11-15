@@ -1,5 +1,5 @@
 PODS:
-  - SwiftyAppLock (0.0.4)
+  - SwiftyAppLock (1.0.2)
 
 DEPENDENCIES:
   - SwiftyAppLock (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SwiftyAppLock: a5f2df6fa793238aeb85e09a11a1ad7f95f9f354
+  SwiftyAppLock: 32bba551309c9c283eee78775847457c3a83c16d
 
 PODFILE CHECKSUM: 83d66e981de43188ba78985b242be6156104b8b1
 

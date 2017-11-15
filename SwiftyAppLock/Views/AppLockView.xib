@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0x-wh-MHy">
-                    <rect key="frame" x="27.5" y="115" width="319" height="214.5"/>
+                    <rect key="frame" x="27.5" y="89" width="319" height="214.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvU-wP-Mdu">
                             <rect key="frame" x="167.5" y="155.5" width="127.5" height="43"/>
@@ -48,21 +48,21 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here are some instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYs-9n-iNy">
-                    <rect key="frame" x="51.5" y="135" width="271" height="21"/>
+                    <rect key="frame" x="51.5" y="109" width="271" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-ET-6L1" customClass="PINView" customModule="SwiftyAppLock" customModuleProvider="target">
-                    <rect key="frame" x="43" y="172" width="288" height="66.5"/>
+                    <rect key="frame" x="43" y="146" width="288" height="66.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:1.5" id="0ut-KB-bJS"/>
+                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:1.7" id="0ut-KB-bJS"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="width" secondItem="s0x-wh-MHy" secondAttribute="width" multiplier="0.85" id="33F-aq-ACW"/>
-                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:2.5" priority="250" id="3bA-t3-CzJ"/>
+                <constraint firstItem="s0x-wh-MHy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1:2.2" priority="250" id="3bA-t3-CzJ"/>
                 <constraint firstItem="cvU-wP-Mdu" firstAttribute="top" secondItem="f6n-ET-6L1" secondAttribute="bottom" constant="32" id="3xm-jf-xEU"/>
                 <constraint firstItem="hYs-9n-iNy" firstAttribute="centerX" secondItem="s0x-wh-MHy" secondAttribute="centerX" id="9Kt-mP-Fcj"/>
                 <constraint firstItem="f6n-ET-6L1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="B5T-0s-BPb"/>
