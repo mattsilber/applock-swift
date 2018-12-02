@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SwiftyAppLock'
-  s.version = '1.0.3'
+  s.version = '1.1.0'
   s.license = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.summary = 'The Swift/iOS implementation of AppLock'
 
@@ -24,6 +24,6 @@ Pod::Spec.new do |s|
  
   s.ios.deployment_target = '8.0'
   
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 
 end 

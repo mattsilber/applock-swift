@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		12ED5054A03ECA7A15C0DFA6 /* Pods_SwiftyAppLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4772A111A49587B3FEB0C53A /* Pods_SwiftyAppLockTests.framework */; };
-		143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */ = {isa = PBXBuildFile; fileRef = 143AAC6E1FB52D0D00DC6461 /* CommonCrypto */; };
 		149F62CE1FB8C59E0002B5F0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149F62CD1FB8C59E0002B5F0 /* Bundle.swift */; };
 		14AA75D21FB7745500160F29 /* PINItemLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D11FB7745500160F29 /* PINItemLayer.swift */; };
 		14AA75D41FB7790800160F29 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA75D31FB7790800160F29 /* Colors.swift */; };
@@ -35,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		143AAC6E1FB52D0D00DC6461 /* CommonCrypto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CommonCrypto; sourceTree = "<group>"; };
 		149F62CD1FB8C59E0002B5F0 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		14AA75D11FB7745500160F29 /* PINItemLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINItemLayer.swift; sourceTree = "<group>"; };
 		14AA75D31FB7790800160F29 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				14D517EF1FB757CA00AA2CA8 /* Views */,
-				143AAC6E1FB52D0D00DC6461 /* CommonCrypto */,
 				14FE8CA21FB51FAB0063E8FD /* AppLock.swift */,
 				14FE8CA41FB521280063E8FD /* Crypto.swift */,
 				149F62CD1FB8C59E0002B5F0 /* Bundle.swift */,
@@ -175,11 +172,11 @@
 			buildConfigurationList = 14FE8C9C1FB51E580063E8FD /* Build configuration list for PBXNativeTarget "SwiftyAppLock" */;
 			buildPhases = (
 				6A7CED384385553BE4B49A09 /* [CP] Check Pods Manifest.lock */,
+				14C8DA0321B373D400E7EEC2 /* ShellScript */,
 				14FE8C831FB51E580063E8FD /* Sources */,
 				14FE8C841FB51E580063E8FD /* Frameworks */,
 				14FE8C851FB51E580063E8FD /* Headers */,
 				14FE8C861FB51E580063E8FD /* Resources */,
-				98D1EB06EA732CC3A7DEF3F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,8 +195,6 @@
 				14FE8C8D1FB51E580063E8FD /* Sources */,
 				14FE8C8E1FB51E580063E8FD /* Frameworks */,
 				14FE8C8F1FB51E580063E8FD /* Resources */,
-				271C4C8840CFDF4B49BFD13B /* [CP] Embed Pods Frameworks */,
-				482AAAA14BCED452CF4DBA41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,16 +213,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Guardanis LLC";
 				TargetAttributes = {
 					14FE8C871FB51E580063E8FD = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					14FE8C901FB51E580063E8FD = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -256,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D517F31FB75A6900AA2CA8 /* AppLockView.xib in Resources */,
-				143AAC6F1FB52D0E00DC6461 /* CommonCrypto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,20 +265,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		271C4C8840CFDF4B49BFD13B /* [CP] Embed Pods Frameworks */ = {
+		14C8DA0321B373D400E7EEC2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "SYSTEM_COMMON_CRYPTO_DIR=\"${SDKROOT}/usr/include/CommonCrypto\"\n\nif [ -f \"${SYSTEM_COMMON_CRYPTO_DIR}/module.modulemap\" ]; then\n  echo \"System CommonCrypto exists. Skipping.\"\n  exit 0\nfi\n\nif [ -d \"${TARGET_BUILD_DIR}/CommonCrypto\" ]; then\n  echo \"${TARGET_BUILD_DIR}/CommonCrypto directory exists. Skipping.\"\n  exit 0\nfi\n\nmkdir -p \"${TARGET_BUILD_DIR}/CommonCrypto\"\ncat <<EOF > \"${TARGET_BUILD_DIR}/CommonCrypto/module.modulemap\"\nmodule CommonCrypto [system] {\n  header \"/usr/include/CommonCrypto/CommonCrypto.h\"\n  export *\n}\nEOF\n";
 		};
 		462927ECB6985340AC26BBEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -303,21 +296,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		482AAAA14BCED452CF4DBA41 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLockTests/Pods-SwiftyAppLockTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6A7CED384385553BE4B49A09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,21 +312,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98D1EB06EA732CC3A7DEF3F0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAppLock/Pods-SwiftyAppLock-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -402,6 +365,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -409,6 +373,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -437,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -464,6 +429,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -471,6 +437,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -493,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SwiftyAppLock/CommonCrypto";
@@ -524,7 +491,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -547,7 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.guardanis.SwiftyAppLock;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -563,7 +530,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guardanis.SwiftyAppLockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -579,7 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guardanis.SwiftyAppLockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

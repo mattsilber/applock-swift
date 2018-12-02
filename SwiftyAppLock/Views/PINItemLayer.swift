@@ -32,7 +32,7 @@ class PINItemLayer {
     }
     
     fileprivate var font: UIFont
-    fileprivate var fontAttributes: [NSAttributedStringKey: Any]
+    fileprivate var fontAttributes: [NSAttributedString.Key: Any]
     
     fileprivate var stateAnimationStart: CFTimeInterval?
     fileprivate var stateAnimationRadiusStart: CGFloat = 1
@@ -52,8 +52,8 @@ class PINItemLayer {
         self.redrawRequired = redrawRequired
         self.font = theme.font
         self.fontAttributes = [
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: theme.textColorEnabled
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: theme.textColorEnabled
         ]
     }
     
@@ -91,7 +91,7 @@ class PINItemLayer {
             self.radiusRangePercent = stateAnimationRadiusTarget
             self.stateAnimationStart = nil
             
-            link.remove(from: .current, forMode: .commonModes)
+            link.remove(from: .current, forMode: RunLoop.Mode.common)
             link.invalidate()
             
             return
@@ -112,6 +112,6 @@ class PINItemLayer {
             target: self,
             selector: #selector(stateAnimationUpdate(_:)))
         
-        link.add(to: .current, forMode: .commonModes)
+        link.add(to: .current, forMode: RunLoop.Mode.common)
     }
 }
