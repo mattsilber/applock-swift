@@ -38,7 +38,7 @@ fileprivate extension String {
         let results = regex.matches(in: self, options: [], range: NSMakeRange(0, casted.length))
         
         return results.map({ result in
-            return (0..<result.numberOfRanges).flatMap({
+            return (0..<result.numberOfRanges).compactMap({
                 let range = result.range(at: $0)
                 
                 return range.location == NSNotFound

@@ -117,7 +117,7 @@ public class AppLock {
                 
                 guard AppLock.shared.unlockRetryAllowed else { return }
                 
-                guard pin.characters.count == AppLock.shared.configs.pinLength else {
+                guard pin.count == AppLock.shared.configs.pinLength else {
                     view.set(instructions: AppLock.shared.messages.errorInsufficientDigits)
                     return
                 }
@@ -182,7 +182,7 @@ public class AppLock {
                 
                 var errors: [String] = []
                 
-                if pin1.characters.count != AppLock.shared.configs.pinLength {
+                if pin1.count != AppLock.shared.configs.pinLength {
                     errors.append(AppLock.shared.messages.errorInsufficientDigits)
                 }
                 

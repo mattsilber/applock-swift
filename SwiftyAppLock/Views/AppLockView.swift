@@ -53,14 +53,14 @@ public class AppLockView: UIView {
             .addObserver(
                 view,
                 selector: #selector(keyboardWillAppear(_:)),
-                name: .UIKeyboardWillShow,
+                name: UIResponder.keyboardWillShowNotification,
                 object: nil)
         
         NotificationCenter.default
             .addObserver(
                 view,
                 selector: #selector(keyboardWillDisappear(_:)),
-                name: .UIKeyboardWillHide,
+                name: UIResponder.keyboardWillHideNotification,
                 object: nil)
         
         return view
@@ -69,7 +69,7 @@ public class AppLockView: UIView {
     fileprivate static func aquireAppLockView(in viewController: UIViewController) -> AppLockView {
         if let existing = viewController.view
             .subviews
-            .flatMap({ $0 as? AppLockView })
+            .compactMap({ $0 as? AppLockView })
             .first {
             return existing
         }

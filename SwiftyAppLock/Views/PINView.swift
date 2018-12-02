@@ -81,7 +81,7 @@ open class PINView: UIView, UIKeyInput, UITextInputTraits {
     }
     
     public func insertText(_ text: String) {
-        text.characters.forEach({
+        text.forEach({
             guard !self.itemsFull else { return }
             
             let element = String($0)
